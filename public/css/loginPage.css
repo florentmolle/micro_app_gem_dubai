@@ -1,0 +1,38 @@
+
+/********************************************** LOGIN PAGE *********************************************************/
+*{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+}
+html{
+      font-size: 62.5%;
+      font-family: sans-serif;
+}
+#loginpage_main{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2rem;
+}
+#loginpage_main>input{
+      margin: 1rem;
+      padding: .5rem;
+}
+#login_button{
+      padding: 1rem 1.5rem;
+      object-fit: contain;
+      cursor: pointer;
+      border-radius: 1rem;
+      margin-top: 2rem;
+      background: linear-gradient(145deg, #f1eeec, #ffffff);
+      box-shadow:  2px 2px 5px #d8d5d1,
+      -3px -3px 5px #ffffff;
+}
+#login_button>p{
+      padding: 0;
+      pointer-events: none;
+}

@@ -1,0 +1,29 @@
+/************************* APP MICROSCOPE ******************************/
+
+
+
+
+Logic : 
+
+Capture pictures -> send it to bdd -> get it on the edit page -> save modification -> get all images -> be able to delete.
+
+
+
+Front-end : 
+- Page 1 : display camera, btn for capture, capture image, show qrCode
+- Page 2 : Get last pictures, display and edit it, show QrCode
+- Page 3 : This is the page you get from the QrCode link, show a download link
+
+
+Back-end : 
+- Send data to bdd
+- get data when it fully saved in bdd and share them to the page 2
+- delete data
+- update data
+
+
+BDD : 
+ - Add
+ - Get
+ - Update
+ - Delete

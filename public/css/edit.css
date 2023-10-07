@@ -1,0 +1,101 @@
+/******************************************** EDIT APP STYLE ************************************************/
+
+#edit_app_container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+}
+
+#realsize_download_container{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      /* opacity: 0; */
+      pointer-events: none;
+}
+
+#editapp_main{
+      width: 90%;
+      height: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5vw;
+      border: 4px solid green;
+}
+
+#editapp_main_innerbox{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+}
+#edit_img_box{
+      width: 65vw;
+      height: 65vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 1px dotted rgba(0,0,0, .3);
+}
+#edit_img{
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+}
+#edit_img_canvas{
+      position: absolute;
+}
+#no_image_iconbox{
+      width: 90%;
+      height: 90%;
+      padding: 10%;
+      opacity: .3;
+}
+#no_image_iconbox>img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+}
+
+/***** QRCODE *****/
+#final_qrcode_image{
+      width: 20%;
+      object-fit: contain;
+      position: absolute;
+      bottom: 5%;
+}
+
+
+/************** NOTIF BOX ******************/
+#new_img_notifbox{
+      width: 35vw;
+      height: 35vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 2%;
+      left: 2%;
+      padding: 1rem;
+      border-radius: 1vw;
+      background: var(--main-bgcolor);
+      box-shadow: 1px 1px 2px rgba(0,0,0, .2), 1px 1px 7px rgba(0,0,0, .2);
+      transform: translate(-50%, 0);
+      pointer-events: none;
+      opacity: 0;
+}
+#newimg_notif{
+      width: 95%;
+      height: 95%;
+      object-fit: cover;
+      border: 1px solid rgba(0,0,0, .3);
+}
