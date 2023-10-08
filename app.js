@@ -10,7 +10,7 @@ const app = express();
 
 
 // Trust proxy
-// app.set('trust proxy', true);
+app.set('trust proxy', true);
 
 
 // Add CSP
