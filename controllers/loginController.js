@@ -17,7 +17,6 @@ exports.postLogin = (req, res) =>
             else if (authenticated) 
             {
                   console.log("Success auth !")
-                  // res.redirect('/home');
                   res.json({ authenticated: true });
             } 
             else 

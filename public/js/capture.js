@@ -7,6 +7,12 @@ function buildCaptureApp()
 	let captureApp = document.createElement('div');
       captureApp.id = "capture_app_container";
       captureApp.innerHTML = `
+
+		<div class="border_green_bgbox">
+			<img src="/assets/bg_green.svg">
+			<div></div>
+		</div>
+
             <section id="cam_display">
                   <video id="video_el_display" muted autoplay playsInline src=""></video>
                   <canvas id="canvas_video_display"></canvas>
@@ -15,7 +21,7 @@ function buildCaptureApp()
             <div id="captured_img_vignette">
                   <img src="" alt="">
 			<div id="captured_save_img_box">
-				<p id="captured_save_img_button" class="classic_btn">Save</p>	
+				<img id="captured_save_img_button" src="/assets/send_icon.png">
 			</div>
 			<div id="saved_overlay_capture">
 				<div id="waiting_anime_box_capture">
@@ -23,20 +29,28 @@ function buildCaptureApp()
 					<div></div>
 					<div></div>
 				</div>
-				<p id="saved_text_capture">SAVED</p>
+				<p id="saved_text_capture">SENDED</p>
 			</div>
             </div>
 
-            <div id="capture_btn" class="classic_btn">
-                  <img src="/assets/camera.png" alt="">
-            </div>
 
-		<div id="switch_cam_button">
-			<p>switch</p>
+		<div id="capture_button_box">
+			<div id="capture_btn">
+				<img src="/assets/camera_02.png" alt="">
+			</div>
+
+			<div id="switch_cam_button">
+				<img src="/assets/swap_icon.png">
+			</div>
 		</div>
+            
 
 		<div id="logo_box">
 			<img src="/assets/logo_black.png">
+		</div>
+
+		<div id="exibition_title_box">
+			<img src="/assets/exibition_title.png">
 		</div>
       `;
 

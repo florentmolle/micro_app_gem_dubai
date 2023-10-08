@@ -19,13 +19,14 @@
 }
 
 #editapp_main{
-      width: 90%;
-      height: 90%;
+      width: 92%;
+      height: 92%;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 5vw;
-      border: 4px solid green;
+      position: relative;
+      border-radius: 4rem;
+      /* border: 4px solid green; */
 }
 
 #editapp_main_innerbox{
@@ -68,12 +69,37 @@
 
 /***** QRCODE *****/
 #final_qrcode_image{
-      width: 20%;
+      width: 15vw;
+      height: 15vw;
       object-fit: contain;
-      position: absolute;
-      bottom: 5%;
+      margin-top: 2vh;
+      opacity: 0;
 }
 
+
+/************** LOGO *****************/
+#logo_edit_box{
+      width: 15vw;
+      position: absolute;
+      bottom: calc(1rem + 3%);
+      right: calc(1.2rem + 3%);
+}
+#logo_edit_box>img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+}
+#exibition_edit_title_box{
+      width: 25vw;
+      position: absolute;
+      left: calc(1.2rem + 2%);
+      top: 2%;
+}
+#exibition_edit_title_box>img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+}
 
 /************** NOTIF BOX ******************/
 #new_img_notifbox{
@@ -88,6 +114,7 @@
       padding: 1rem;
       border-radius: 1vw;
       background: var(--main-bgcolor);
+      border: 1px solid green;
       box-shadow: 1px 1px 2px rgba(0,0,0, .2), 1px 1px 7px rgba(0,0,0, .2);
       transform: translate(-50%, 0);
       pointer-events: none;

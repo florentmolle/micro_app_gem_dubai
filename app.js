@@ -35,6 +35,7 @@ const loginRoute = require('./routes/loginRoute');
 const indexRoute = require('./routes/indexRoute');
 const uploadCapturedDataRoute = require('./routes/uploadCapturedDataRoute')(io);
 const checkAuthenticated = require('./middlewares/checkAuthenticated');
+const downloadRoute = require('./routes/downloadRoute');
 
 
 //Handle JSON
@@ -80,14 +81,16 @@ app.set('view engine', 'ejs');
 
 //Public static file
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
 
 // Login route (unprotected)
 app.use('/',limiter, loginRoute);
+app.use('/download', downloadRoute);
+
 
 //ROUTES protected
 app.use(checkAuthenticated);
 app.use('/home', indexRoute);
-app.use('/uploads', express.static('uploads'));
 app.use('/', uploadCapturedDataRoute);
 
 

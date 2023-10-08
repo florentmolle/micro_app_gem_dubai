@@ -23,6 +23,12 @@ function buildEditApp()
                   <img src="" id="realsize_render_baseimg">
             </div>
             <div id="editapp_main">
+
+                  <div class="border_green_bgbox">
+                        <img src="/assets/bg_green.svg">
+                        <div></div>
+                  </div>
+                  
                   <div id="editapp_main_innerbox">
                         <div id="edit_img_box">
                               <img id="edit_img" src="">
@@ -33,6 +39,15 @@ function buildEditApp()
                         </div>
                         <img src="" id="final_qrcode_image">
                   </div>
+
+                  <div id="logo_edit_box">
+                        <img src="/assets/logo_black.png">
+                  </div>
+
+                  <div id="exibition_edit_title_box">
+                        <img src="/assets/exibition_title.png">
+                  </div>
+
             </div>
             
             
@@ -71,6 +86,8 @@ function buildEditApp()
       //       let isNew = true;
       //       handleAddImgInEditCanvas(edit_img_canvas, window.editctx, edit_img, view_modif_btn, isNew);
       // }, { once: true });
+
+      window.addEventListener('resize', resizeEditImgCanvas);
 
 }
 
@@ -138,7 +155,6 @@ function addToEdit()
             edit_img_box.style.transform = "scale(1)";
 
             resizeEditImgCanvas();
-            drawEditImg();
 
 
             //SHOW QRCODE
@@ -163,7 +179,10 @@ function resizeEditImgCanvas()
       const edit_img_box = document.getElementById('edit_img_box');
       edit_img_canvas.width = edit_img_box.getBoundingClientRect().width;
       edit_img_canvas.height = edit_img_box.getBoundingClientRect().height;
+
+      drawEditImg();
 }
+
 
 /******************************************* DRAW IMAGE ********************************************/
 function drawEditImg()

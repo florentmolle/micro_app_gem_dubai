@@ -1,15 +1,43 @@
 /****************************************** CAPTURE STYLE *********************************************/
 #capture_app_container{
-      width: 100%;
-      height: 100%;
+      width: 92%;
+      height: 92%;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
+      border-radius: 4rem;
+      /* border: 4px solid green; */
+}
+.border_green_bgbox{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 1rem 1.2rem;
+      border-radius: 3.5rem;
+      overflow: hidden;
+}
+.border_green_bgbox>img{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+}
+.border_green_bgbox>div{
+      width: 100%;
+      height: 100%;
+      border-radius: 2.5rem;
+      background: var(--main-bgcolor);
 }
 #cam_display{
-      width: 50vw;
-      height: 50vw;
+      width: 70vh;
+      height: 70vh;
       position: relative;
       overflow: hidden;
 }
@@ -26,14 +54,15 @@
 #canvas_video_display{
 }
 #captured_img_vignette{
-      width: 17vw;
+      width: 10vw;
+      min-width: 6rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       position: absolute;
-      top: 2%;
-      right: 2%;
+      top: 7%;
+      right: 9%;
       opacity: 0;
 }
 #captured_img_vignette>img{
@@ -45,46 +74,48 @@
       width: 100%;
       display: flex;
       justify-content: flex-end;
-      margin-top: 2vh;
 }
 #captured_save_img_button{
-      width: auto;
-      height: auto;
-      padding: 1rem 1.5rem;
+      width: 40%;
+      min-width: 4.5rem;
+      padding: 0.5rem;
       object-fit: contain;
       cursor: pointer;
-      /* box-shadow: rgba(9, 30, 66, 0.15) 0px 1px 1px, rgba(9, 30, 66, 0.05) 0px 0px 1px 1px; */
-      border-radius: .3rem;
+      border-radius: 0.3rem;
       font-size: 1.5rem;
       cursor: pointer;
 }
+#capture_button_box{
+      display: flex;
+      align-items: flex-end;
+      position: absolute;
+      bottom: 5%;
+      left: calc(1.2rem + 3%);
+}
 #capture_btn{
-      width: 10rem;
-      height: 10rem;
+      width: 8rem;
+      height: 8rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
-      top: 5%;
-      left: 5%;
-      /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
-      border-radius: 50%;
       cursor: pointer;
 }
 #capture_btn>img{
-      width: 60%;
-      height: 60%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       opacity: .7;
 }
 #switch_cam_button{
-      position: absolute;
-      top: 25%;
-      left: 5%;
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
 }
-#switch_cam_button>p{
-      padding: 1rem;
-      font-size: 1.5rem;
+#switch_cam_button>img{
+      width: 100%;
+      height: 100%;
+      margin-left: 1rem;
+      object-fit: contain;
 }
 #saved_overlay_capture{
       width: 100%;
@@ -102,7 +133,7 @@
 }
 #saved_overlay_capture>p{
       opacity: 0;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: var(--main-bgcolor);
       transform: translate(0, 20%);
 }
@@ -131,11 +162,26 @@
 /*** LOGO ***/
 #logo_box{
       width: 10vw;
+      min-width: 9rem;
       position: absolute;
       bottom: 5%;
-      left: 2%;
+      right: calc(1.2rem + 3%);
 }
 #logo_box>img{
       width: 100%;
+      object-fit: contain;
+}
+
+/*** TITLE ***/
+#exibition_title_box{
+      width: 15vw;
+      min-width: 15rem;
+      position: absolute;
+      top: 5%;
+      left: calc(1.2rem + 2%);
+}
+#exibition_title_box>img{
+      width: 100%;
+      height: 100%;
       object-fit: contain;
 }
