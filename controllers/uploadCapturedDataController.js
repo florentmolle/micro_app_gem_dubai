@@ -18,7 +18,7 @@ module.exports = function(io)
                         let path = filePath.replace(/\\/g, '/');
                         let encryptedPath = encrypt(path);
                         let encryptedPathStr = Buffer.from(JSON.stringify(encryptedPath)).toString('base64');
-                         var fileUrl = 'https://www.testappgem-production.up.railway.app/download?path=' + encodeURIComponent(encryptedPathStr);
+                         var fileUrl = 'https://testappgem-production.up.railway.app/download?path=' + encodeURIComponent(encryptedPathStr);
                         //  https://www.google.com/
                         //  var fileUrl = 'https://www.testappgem-production.up.railway.app/' + path;
 
