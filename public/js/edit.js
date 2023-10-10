@@ -203,11 +203,10 @@ function drawEditImg()
 function editInitAll()
 {
 
-      if(window.innerWidth > 1200)
+      if(window.innerWidth < window.innerHeight)
       {
-            const my_body = document.getElementById('my_body');
-            const main = document.querySelector('main');
-            my_body.style.height = "98vh";
-            main.style.height = "98vh";
+
+            const edit_app_container = document.getElementById('edit_app_container');
+            edit_app_container.style.height = "98vh";
       }
 }

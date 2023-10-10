@@ -7,7 +7,6 @@ function buildCaptureApp()
 	let captureApp = document.createElement('div');
       captureApp.id = "capture_app_container";
       captureApp.innerHTML = `
-
 		<div class="border_green_bgbox">
 			<img src="/assets/bg_green.svg">
 			<div></div>
@@ -16,6 +15,7 @@ function buildCaptureApp()
             <section id="cam_display">
                   <video id="video_el_display" muted autoplay playsInline src=""></video>
                   <canvas id="canvas_video_display"></canvas>
+                  <canvas id="canvas_video_realsize_render"></canvas>
             </section>
 
             <div id="captured_img_vignette">
@@ -61,6 +61,12 @@ function buildCaptureApp()
       current_app.appendChild(captureApp);
       chosse_app_container.style.display = "none";
       current_app.style.display = "flex";
+
+	//Prepare ctx
+	const canvas_video_display = document.getElementById('canvas_video_display');
+	const canvas_video_realsize_render = document.getElementById('canvas_video_realsize_render');
+      window.smallCtx = canvas_video_display.getContext('2d');
+	window.realsizeCtx = canvas_video_realsize_render.getContext('2d');
 
 	window.camSwitchCounter = 0;
 	startVideoCamDisplay("environment");
@@ -155,7 +161,7 @@ function drawVideo()
 {
       const video_el_display = document.getElementById('video_el_display');
       const canvas_video_display = document.getElementById('canvas_video_display');
-      let displayCtx = canvas_video_display.getContext('2d');
+	const canvas_video_realsize_render = document.getElementById('canvas_video_realsize_render');
 
 	let videoWidth = video_el_display.videoWidth;
 	let videoHeight = video_el_display.videoHeight;
@@ -165,9 +171,12 @@ function drawVideo()
 	 var widthOffset = (videoWidth - size) / 2;
 	 var heightOffset = (videoHeight - size) / 2;
 
-	displayCtx.drawImage(video_el_display, widthOffset, heightOffset, size, size, 0, 0, canvas_video_display.width, canvas_video_display.height);
+	 canvas_video_realsize_render.width = size;
+	 canvas_video_realsize_render.height = size;
+
+	window.smallCtx.drawImage(video_el_display, widthOffset, heightOffset, size, size, 0, 0, canvas_video_display.width, canvas_video_display.height);
+	window.realsizeCtx.drawImage(video_el_display, widthOffset, heightOffset, size, size, 0, 0, size, size);
 	drawAnimation = requestAnimationFrame(drawVideo);
-	
 }
 
 /********************************************** STOP STREAM ******************************************/
@@ -209,7 +218,8 @@ async function capturePhoto(event, el)
 {
       const captured_img_vignette = document.getElementById('captured_img_vignette');
       const canvas_video_display = document.getElementById('canvas_video_display');
-	let imgDataUrl = canvas_video_display.toDataURL();
+	const canvas_video_realsize_render = document.getElementById('canvas_video_realsize_render');
+	let imgDataUrl = canvas_video_realsize_render.toDataURL();
 	captured_img_vignette.children[0].src = imgDataUrl;
 	captured_img_vignette.style.opacity = "1";
 	captured_img_vignette.dataUrl = imgDataUrl;

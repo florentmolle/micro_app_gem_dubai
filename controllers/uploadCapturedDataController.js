@@ -18,24 +18,24 @@ module.exports = function(io)
                         let path = filePath.replace(/\\/g, '/');
                         let encryptedPath = encrypt(path);
                         let encryptedPathStr = Buffer.from(JSON.stringify(encryptedPath)).toString('base64');
-                         var fileUrl = 'https://testappgem-production.up.railway.app/download?path=' + encodeURIComponent(encryptedPathStr);
+                        var fileUrl = 'https://testappgem-production.up.railway.app/download?path=' + encodeURIComponent(encryptedPathStr);
                         //  https://www.google.com/
                         //  var fileUrl = 'https://www.testappgem-production.up.railway.app/' + path;
 
-                         //GENERATE QR CODE AND SEND IT TO CLIENT
-                         QRCode.toDataURL(fileUrl, function (err, url)
-                         {
-                               if (err) {
-                                     res.status(200).send({ message: 'File saved successfully', filePath: filePath, fileUrl: fileUrl, qrcode: `error` });
-                                     console.error('Error generating QR code', err);
-                                     return;
-                               }
+                        //GENERATE QR CODE AND SEND IT TO CLIENT
+                        QRCode.toDataURL(fileUrl, function (err, url)
+                        {
+                              if (err) {
+                                    res.status(200).send({ message: 'File saved successfully', filePath: filePath, fileUrl: fileUrl, qrcode: `error` });
+                                    console.error('Error generating QR code', err);
+                                    return;
+                              }
 
-                               // Emit a message to all connected clients
-                               io.emit('fileSaved', { filePath: filePath, fileUrl: fileUrl, qrcode: url });
+                              // Emit a message to all connected clients
+                              io.emit('fileSaved', { filePath: filePath, fileUrl: fileUrl, qrcode: url });
 
-                               res.status(200).send({ message: 'File saved successfully', filePath: filePath, fileUrl: fileUrl, qrcode: url});
-                         });
+                              res.status(200).send({ message: 'File saved successfully', filePath: filePath, fileUrl: fileUrl, qrcode: url});
+                        });
                   });
             }
       };

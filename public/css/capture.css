@@ -53,6 +53,13 @@
 }
 #canvas_video_display{
 }
+#canvas_video_realsize_render{
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0;
+}
 #captured_img_vignette{
       width: 10vw;
       min-width: 6rem;
