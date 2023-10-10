@@ -90,7 +90,7 @@ app.use('/download', downloadRoute);
 
 //ROUTES protected
 app.use(checkAuthenticated);
-app.use('/home', indexRoute);
+app.use('/', indexRoute);
 app.use('/', uploadCapturedDataRoute);
 
 
