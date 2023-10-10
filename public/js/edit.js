@@ -189,6 +189,7 @@ function drawEditImg()
 {
       const edit_img_canvas = document.getElementById('edit_img_canvas');
       const edit_img = document.getElementById('edit_img');
+
       window.editctx.drawImage(edit_img, 0,0,edit_img_canvas.width, edit_img_canvas.height);
 }
 

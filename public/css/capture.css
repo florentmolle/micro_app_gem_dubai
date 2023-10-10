@@ -60,6 +60,48 @@
       pointer-events: none;
       opacity: 0;
 }
+#captured_real_size_container{
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0;
+}
+#captured_real_size_container>img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+}
+#canvas_captured_real_size{
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+}
+#capture_img_logo_box{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+}
+#capture_img_logo_box>img{
+      position: absolute;
+      object-fit: contain;
+}
+#capture_img_logo_exibition{
+      width: 25%;
+      top: 2%;
+      left: 2%;
+}
+#capture_img_logo_logo{
+      width: 18%;
+      bottom: 2%;
+      right: 2%;
+}
 #captured_img_vignette{
       width: 10vw;
       min-width: 6rem;

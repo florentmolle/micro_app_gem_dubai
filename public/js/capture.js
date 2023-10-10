@@ -16,6 +16,17 @@ function buildCaptureApp()
                   <video id="video_el_display" muted autoplay playsInline src=""></video>
                   <canvas id="canvas_video_display"></canvas>
                   <canvas id="canvas_video_realsize_render"></canvas>
+
+			<div id="captured_real_size_container">
+				<img src="">
+				<canvas id="canvas_captured_real_size"></canvas>
+			</div>
+
+			<div id="capture_img_logo_box">
+				<img id="capture_img_logo_exibition" src="/assets/exibition_title_white.png">
+				<img id="capture_img_logo_logo" src="/assets/logo_white.png">
+			</div>
+
             </section>
 
             <div id="captured_img_vignette">
@@ -65,8 +76,11 @@ function buildCaptureApp()
 	//Prepare ctx
 	const canvas_video_display = document.getElementById('canvas_video_display');
 	const canvas_video_realsize_render = document.getElementById('canvas_video_realsize_render');
+	const canvas_captured_real_size = document.getElementById('canvas_captured_real_size');
       window.smallCtx = canvas_video_display.getContext('2d');
 	window.realsizeCtx = canvas_video_realsize_render.getContext('2d');
+	window.realsizeCapturedCtx = canvas_captured_real_size.getContext('2d');
+
 
 	window.camSwitchCounter = 0;
 	startVideoCamDisplay("environment");
@@ -166,13 +180,17 @@ function drawVideo()
 	let videoWidth = video_el_display.videoWidth;
 	let videoHeight = video_el_display.videoHeight;
 
-	 // Calculate the dimensions of the square
-	 var size = Math.min(videoWidth, videoHeight);
-	 var widthOffset = (videoWidth - size) / 2;
-	 var heightOffset = (videoHeight - size) / 2;
+	// Calculate the dimensions of the square
+	var size = Math.min(videoWidth, videoHeight);
+	var widthOffset = (videoWidth - size) / 2;
+	var heightOffset = (videoHeight - size) / 2;
 
-	 canvas_video_realsize_render.width = size;
-	 canvas_video_realsize_render.height = size;
+	canvas_video_realsize_render.width = size;
+	canvas_video_realsize_render.height = size;
+
+	const capture_img_logo_box = document.getElementById('capture_img_logo_box');
+	capture_img_logo_box.style.width = `${size}px`;
+	capture_img_logo_box.style.height = `${size}px`;
 
 	window.smallCtx.drawImage(video_el_display, widthOffset, heightOffset, size, size, 0, 0, canvas_video_display.width, canvas_video_display.height);
 	window.realsizeCtx.drawImage(video_el_display, widthOffset, heightOffset, size, size, 0, 0, size, size);
@@ -220,9 +238,48 @@ async function capturePhoto(event, el)
       const canvas_video_display = document.getElementById('canvas_video_display');
 	const canvas_video_realsize_render = document.getElementById('canvas_video_realsize_render');
 	let imgDataUrl = canvas_video_realsize_render.toDataURL();
-	captured_img_vignette.children[0].src = imgDataUrl;
-	captured_img_vignette.style.opacity = "1";
-	captured_img_vignette.dataUrl = imgDataUrl;
+
+	//PRINT ON FINAL CANVAS
+	const captured_real_size_container = document.getElementById('captured_real_size_container');
+	captured_real_size_container.style.width = `${canvas_video_realsize_render.width}px`;
+	captured_real_size_container.style.height = `${canvas_video_realsize_render.height}px`;
+	
+	const canvas_captured_real_size = document.getElementById('canvas_captured_real_size');
+	canvas_captured_real_size.width = canvas_video_realsize_render.width;
+	canvas_captured_real_size.height = canvas_video_realsize_render.height;
+
+	let realSizeImg = captured_real_size_container.children[0]
+	realSizeImg.src = imgDataUrl;
+	realSizeImg.addEventListener('load', ()=>{
+
+		window.realsizeCapturedCtx.drawImage(realSizeImg, 0,0,canvas_captured_real_size.width, canvas_captured_real_size.height);
+
+		//DRAW EXIBITION LOGO
+		const capture_img_logo_exibition = document.getElementById('capture_img_logo_exibition');
+		let exibitionImgLeft = capture_img_logo_exibition.getBoundingClientRect().left - canvas_captured_real_size.getBoundingClientRect().left;
+		let exibitionImgTop = capture_img_logo_exibition.getBoundingClientRect().top - canvas_captured_real_size.getBoundingClientRect().top;
+		let exibitionImgWidth = capture_img_logo_exibition.getBoundingClientRect().width;
+		let exibitionImgHeight = capture_img_logo_exibition.getBoundingClientRect().height;
+	
+		window.realsizeCapturedCtx.drawImage(capture_img_logo_exibition, exibitionImgLeft, exibitionImgTop, exibitionImgWidth, exibitionImgHeight);
+	
+	
+		//DRAW LOGO
+		const capture_img_logo_logo = document.getElementById('capture_img_logo_logo');
+		let logoImgLeft = capture_img_logo_logo.getBoundingClientRect().left - canvas_captured_real_size.getBoundingClientRect().left;
+		let logoImgTop = capture_img_logo_logo.getBoundingClientRect().top - canvas_captured_real_size.getBoundingClientRect().top;
+		let logoImgWidth = capture_img_logo_logo.getBoundingClientRect().width;
+		let logoImgHeight = capture_img_logo_logo.getBoundingClientRect().height;
+	
+		window.realsizeCapturedCtx.drawImage(capture_img_logo_logo, logoImgLeft, logoImgTop, logoImgWidth, logoImgHeight);
+
+
+		//GET FINAL IMAGE
+		let finalImgDataUrl = canvas_captured_real_size.toDataURL();
+		captured_img_vignette.children[0].src = finalImgDataUrl;
+		captured_img_vignette.style.opacity = "1";
+		captured_img_vignette.dataUrl = finalImgDataUrl;
+	});
 }
 
 

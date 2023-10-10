@@ -46,6 +46,7 @@
       align-items: center;
       position: relative;
       border: 1px dotted rgba(0,0,0, .3);
+      overflow: hidden;
 }
 #edit_img{
       position: absolute;
@@ -66,6 +67,7 @@
       height: 100%;
       object-fit: contain;
 }
+
 
 /***** QRCODE *****/
 #final_qrcode_image{
