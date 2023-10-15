@@ -10,7 +10,6 @@ module.exports = function(io)
       return {
             uploadData: function(req, res) {
                   var filePath = req.file.path;
-                  let filename = req.file.filename;
 
                   console.log('FILEPATH  : ', req.file, filePath)
 
@@ -24,15 +23,15 @@ module.exports = function(io)
 
                         //GET FILE PATH AND ENCRYPT IT AND BUILD URL
                         // let path = filePath.replace(/\\/g, '/');
-                        let path = filename + '.png';
+                        // let path = filename + '.png';
 
-                        console.log('PATH CONTROLLERS : ', path);
+                        // console.log('PATH CONTROLLERS : ', path);
 
 
 
-                        let encryptedPath = encrypt(path);
+                        let encryptedPath = encrypt(filePath);
                         let encryptedPathStr = Buffer.from(JSON.stringify(encryptedPath)).toString('base64');
-                        var fileUrl = 'https://res.cloudinary.com/dkgrd9gjc/image/upload/v1697351028/' + encodeURIComponent(encryptedPathStr);
+                        var fileUrl = '/download/' + encodeURIComponent(encryptedPathStr);
                         //  var fileUrl = 'https://www.testappgem-production.up.railway.app/' + path;
 
                         //GENERATE QR CODE AND SEND IT TO CLIENT
