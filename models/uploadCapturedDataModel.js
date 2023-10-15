@@ -8,8 +8,8 @@ exports.saveData = function(filePath, callback) {
             if (err)
             {
                   console.log('ERROR CAPTured data model : ', err)
-                  callback(err);
+                  return callback(err);
             }
-            callback(null, result);
+            return callback(null, result);
       });
 };

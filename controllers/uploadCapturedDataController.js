@@ -18,7 +18,7 @@ module.exports = function(io)
                         if (err)
                         {
                               console.log('ERROR CAPTured data controller : ', err)
-                              res.status(500).send(err);
+                              return res.status(500).send(err);
                         }
 
                         //GET FILE PATH AND ENCRYPT IT AND BUILD URL
@@ -43,7 +43,7 @@ module.exports = function(io)
                               // Emit a message to all connected clients
                               io.emit('fileSaved', { filePath: filePath, fileUrl: fileUrl, qrcode: url });
 
-                              res.status(200).send({ message: 'File saved successfully', filePath: filePath, fileUrl: fileUrl, qrcode: url});
+                              return res.status(200).send({ message: 'File saved successfully', filePath: filePath, fileUrl: fileUrl, qrcode: url});
                         });
                   });
             }
