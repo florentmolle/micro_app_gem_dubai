@@ -11,7 +11,7 @@ module.exports = function(io)
             uploadData: function(req, res) {
                   var filePath = req.file.path;
 
-                  console.log('FILEPATH  : ', filePath)
+                  console.log('FILEPATH  : ', req.file, filePath)
 
                   uploadCapturedDataModel.saveData(filePath, function(err, result) 
                   {
