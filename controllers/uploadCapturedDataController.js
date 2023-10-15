@@ -38,6 +38,8 @@ module.exports = function(io)
                                     return;
                               }
 
+                              console.log("filePath : ", filePath, "fileUrl : ", fileUrl, "QRCODE : ", url)
+
                               // Emit a message to all connected clients
                               io.emit('fileSaved', { filePath: filePath, fileUrl: fileUrl, qrcode: url });
 
