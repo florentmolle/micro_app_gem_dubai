@@ -10,9 +10,16 @@ module.exports = function(io)
       return {
             uploadData: function(req, res) {
                   var filePath = req.file.path;
+
+                  console.log('FILEPATH  : ', filePath)
+
                   uploadCapturedDataModel.saveData(filePath, function(err, result) 
                   {
-                        if (err) return res.status(500).send(err);
+                        if (err)
+                        {
+                              console.log('ERROR CAPTured data controller : ', err)
+                              res.status(500).send(err);
+                        }
 
                         //GET FILE PATH AND ENCRYPT IT AND BUILD URL
                         let path = filePath.replace(/\\/g, '/');
