@@ -31,7 +31,7 @@ module.exports = function(io)
 
                         let encryptedPath = encrypt(filePath);
                         let encryptedPathStr = Buffer.from(JSON.stringify(encryptedPath)).toString('base64');
-                        var fileUrl = '/download?path=' + encodeURIComponent(encryptedPathStr);
+                        var fileUrl = 'https://geminclusion-microapp-e9da7c5a12da.herokuapp.com/download?path=' + encodeURIComponent(encryptedPathStr);
                         //  var fileUrl = 'https://www.testappgem-production.up.railway.app/' + path;
 
                         //GENERATE QR CODE AND SEND IT TO CLIENT
